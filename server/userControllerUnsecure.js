@@ -15,3 +15,14 @@ const destinies = [
   'summit Everest',
   'become the next Bruce Willis',
 ]
+module.exports = {
+  signup: (req, res) => {
+    const {email, password} = req.body;
+    
+  },
+  login: (req,res)=> {
+    const {email, password} = req.body;
+    console.log(email);
+    console.log(password);
+  }
+}
