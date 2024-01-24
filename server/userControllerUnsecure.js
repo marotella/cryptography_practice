@@ -18,7 +18,15 @@ const destinies = [
 module.exports = {
   signup: (req, res) => {
     const {email, password} = req.body;
-    
+    const destiny = destinies[Math.floor(Math.random() * destinies.length)];
+    let newDatabaseEntry = {
+      email: email,
+      password: password,
+      destiny: destiny
+    };
+    console.log("New database entry: ", newDatabaseEntry);
+    database.push(newDatabaseEntry);
+    res.status(200).send({success: true})
   },
   login: (req,res)=> {
     const {email, password} = req.body;
