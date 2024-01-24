@@ -30,7 +30,20 @@ module.exports = {
   },
   login: (req,res)=> {
     const {email, password} = req.body;
-    console.log(email);
-    console.log(password);
+    let userData;
+    for (const user of database){
+      if (user.email === email){
+        userData = user;
+        break;
+      }
+    }
+    if(!userData){
+      res.status(200).send({success:false, message:"Invalid email"})
+    } else if(password === userData.password){
+      res.status(200).send({success:true, destiny: userData.destiny})
+    } else{
+      res.status(200).send({success:false, message: "Invalid password"})
+    }
+    console.log("Sending response:", res.statusCode, res._header, res._data);
   }
 }
